@@ -1,0 +1,194 @@
+<header class="_home-header">
+    <div class="slider-container">
+        <div class="slider">
+            {{ collection:blog limit="3"}}
+            <div class="_slide-items">
+                <img
+                    src="{{ featured_image }}"
+                    alt="{{ featured_image:alt }}"
+                />
+                <article>
+                    <a href="{{ url }}"><h2>{{ title }}</h2></a>
+                    <div class="_more-block">
+                        <p>{{ date }}</p>
+                        <a href="{{ url }}">Подробнее -></a>
+                    </div>
+                </article>
+            </div>
+            {{ /collection:blog }}
+        </div>
+
+        <button class="prev-button" aria-label="Посмотреть предыдущий слайд">
+            &lt;
+        </button>
+        <button class="next-button" aria-label="Посмотреть следующий слайд">
+            &gt
+        </button>
+    </div>
+</header>
+<div class="_block-for-height"></div>
+<section class="">
+    <h2>Наши партнёры</h2>
+    <div class="_partners">
+        <figure><img src="/assets/nbu-01-300x300.png" alt="" /></figure>
+        <figure>
+            <img
+                src="/assets/aacc03141162807.y3jvccwxmdgwldg0ncwwldexnw.png"
+                alt=""
+            />
+        </figure>
+        <figure>
+            <img src="/assets/uzbekistanairways-768x768.png" alt="" />
+        </figure>
+    </div>
+</section>
+<article class="">{{ content | widont }}</article>
+
+<script>
+    // Получаем элементы слайдера
+    const slider = document.querySelector(".slider");
+    const prevButton = document.querySelector(".prev-button");
+    const nextButton = document.querySelector(".next-button");
+    const slides = Array.from(slider.querySelectorAll("._slide-items"));
+    const slideCount = slides.length;
+    let slideIndex = 0;
+
+    // Устанавливаем обработчики событий для кнопок
+    prevButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
+
+    // Функция для показа предыдущего слайда
+    function showPreviousSlide() {
+        slideIndex = (slideIndex - 1 + slideCount) % slideCount;
+        updateSlider();
+    }
+
+    // Функция для показа следующего слайда
+    function showNextSlide() {
+        slideIndex = (slideIndex + 1) % slideCount;
+        updateSlider();
+    }
+    setInterval(showNextSlide, 3000);
+
+    // Функция для обновления отображения слайдера
+    function updateSlider() {
+        slides.forEach((slide, index) => {
+            if (index === slideIndex) {
+                slide.style.display = "block";
+            } else {
+                slide.style.display = "none";
+            }
+        });
+    }
+
+    // Инициализация слайдера
+    updateSlider();
+</script>
+
+<style>
+    ._block-for-height {
+        height: 500px;
+    }
+    ._home-header {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+    }
+    ._slide-items {
+        position: relative;
+    }
+    ._slide-items article {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+        width: 70%;
+    }
+    .page-title {
+        text-align: center;
+    }
+
+    .slider-container {
+        position: relative;
+        margin: 0 auto;
+        overflow: hidden;
+        background-color: bisque;
+    }
+
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slider img {
+        object-fit: cover;
+        width: 100vw;
+        height: 500px;
+        filter: brightness(0.5);
+    }
+
+    .prev-button,
+    .next-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border: none;
+        font-size: 30px;
+        color: white;
+    }
+
+    .prev-button {
+        left: 10px;
+    }
+
+    .next-button {
+        right: 10px;
+    }
+    ._more-block {
+        display: flex;
+        font-size: 12px;
+        font-size: 12px;
+        margin-top: 12px;
+        font-weight: 500;
+        justify-content: space-between;
+    }
+    ._more-block a {
+        padding: 0.5rem;
+        background: rgb(218, 47, 182);
+        background: linear-gradient(
+            90deg,
+            rgba(218, 47, 182, 1) 0%,
+            rgba(254, 24, 118, 1) 100%
+        );
+    }
+
+    ._partners {
+        display: grid;
+        justify-items: center;
+        grid-auto-flow: column;
+        grid-gap: 1rem;
+    }
+    ._partners figure {
+        border: 3px solid rgba(218, 47, 182, 1);
+        cursor: pointer;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        box-shadow: 0px 0px 5px #0000009e;
+        max-width: 100px;
+    }
+    @media screen and (max-width: 640px) {
+        ._home-header {
+            top: 40px;
+        }
+    }
+</style>

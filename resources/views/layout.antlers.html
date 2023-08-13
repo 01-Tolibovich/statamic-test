@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="{{ site:short_locale }}">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{{ title ?? site:name }}</title>
+        {{ vite src="resources/js/site.js|resources/css/site.css" }}
+    </head>
+    <body>
+        {{ partial:header }}
+        <div class="_wrapper">{{ template_content }}</div>
+        {{ partial:footer }}
+    </body>
+</html>
+
+<style>
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #4a4a4a;
+        text-transform: uppercase;
+    }
+    ._wrapper {
+        max-width: 1024px;
+        width: 100%;
+        padding: 1rem;
+        margin: 100px auto;
+    }
+
+</style>

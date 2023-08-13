@@ -1,0 +1,80 @@
+<h1>{{ title }}</h1>
+
+<div class="_news-items">
+    {{ collection:blog paginate="3" as="posts"}} {{ posts }}
+    <div>
+        <a href="{{ url }}"
+            ><img
+                class="_post-img"
+                src="{{ featured_image }}"
+                alt="{{ featured_image:alt }}"
+        /></a>
+        <article>
+            <p>{{ date }}</p>
+            <a href="{{ url }}"><h2>{{ title }}</h2></a>
+            <div class="_author">
+                <img src="{{ author:avatar }}" alt="" />
+                <p>{{ author:name }}</p>
+            </div>
+        </article>
+    </div>
+
+    {{ /posts }} {{ paginate }}
+    <a class="_poginate _next" href="{{ prev_page }}">Назад</a>
+
+    <a class="_poginate _prev" href="{{ next_page }}">следующий</a>
+
+    {{ /paginate }} {{ /collection:blog }}
+</div>
+
+<style>
+    ._news-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 1rem;
+        position: relative;
+        color: #ffffff;
+    }
+    ._news-items > div {
+        background-color: #374151;
+        box-shadow: 0px 2px 10px #00000075;
+    }
+    ._news-items article {
+        padding: 1rem;
+        display: grid;
+        grid-gap: 14px;
+    }
+    ._news-items p {
+        font-size: 12px;
+    }
+    ._post-img {
+        height: 250px;
+        object-fit: cover;
+        width: 100%;
+    }
+    ._author {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    ._author img {
+        width: 30px;
+        border-radius: 50%;
+        height: 30px;
+    }
+    ._poginate {
+        position: absolute;
+        bottom: -80px;
+        margin-top: 100px;
+        background-color: rgba(254, 24, 118, 1);
+        min-width: 100px;
+        text-align: center;
+        padding: 10px;
+    }
+    ._next {
+        left: 0;
+    }
+    ._prev {
+        right: 0;
+    }
+</style>

@@ -1,0 +1,12 @@
+super: true
+name: Daler
+avatar: fb_img_1691404747374.jpg
+id: 3359d853-5e05-4c3f-9047-9e32d37fc247
+password_hash: $2y$10$T.N5b//DA.J/GW2eqqET6Ox6UJgxHlwCvkoXMr57/Ch7LIxVfyOji
+preferences:
+  collections:
+    pages:
+      after_save: continue_editing
+  assets:
+    assets:
+      per_page: 100
