@@ -27,7 +27,7 @@
     </div>
 </header>
 <div class="_block-for-height"></div>
-<section class="">
+<section>
     <h2>Наши партнёры</h2>
     <div class="_partners">
         <figure><img src="/assets/nbu-01-300x300.png" alt="" /></figure>
@@ -41,6 +41,10 @@
             <img src="/assets/uzbekistanairways-768x768.png" alt="" />
         </figure>
     </div>
+</section>
+<section>
+    <h2>Наши портфолио</h2>
+
 </section>
 <article class="">{{ content | widont }}</article>
 
@@ -185,6 +189,16 @@
         border-radius: 50%;
         box-shadow: 0px 0px 5px #0000009e;
         max-width: 100px;
+    }
+    section {
+        margin-bottom: 4rem;
+    }
+    section h2 {
+        text-align: center;
+        margin-bottom: 32px;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: rgba(218, 47, 182, 1);
     }
     @media screen and (max-width: 640px) {
         ._home-header {
